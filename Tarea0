@@ -1,0 +1,113 @@
+
+Tarea 0 (Opcional)
+
+
+Esta tarea es para recordar cosas que debieron haber aprendido (o les comentaron) en
+el curso de Ecuaciones Diferenciales y tal vez si ya llevaron Física Computacional.
+
+Consiste en desarrollar un código para aproximar la solución de una ecuación ordinaria sencilla
+
+y'=-ky
+
+Les agrego unas notas que escribí para un curso que dí este verano en el MCTP, abordo 
+temas de estabilidad y convergencia que más adelante se verán a fondo.
+
+Un programa de este tipo generalmente lleva una estructura sencilla
+
+
+Declaración de variable
+
+Especificación de parámetros
+
+Inicialización
+
+Ciclo para obtener nuevos valores
+      Guardar el valor actual de la función como previo
+      Calcular el nuevo valor con algún método i.e. el método de euler en este caso y = y_p +dx*(-k*y_p)
+      avanzar la variable independiente
+
+Fin
+
+
+Para una implementación rápida pueden usar el método de Euler (que en general no sirve de mucho)
+
+
+Guía rápida de git:
+
+
+1. Sincronizar con un repositorio
+
+Crear directorio (en este caso le llamo TareasRN)
+
+> mkdir TareasRN
+
+Entrar al directorio
+
+> cd TareasRN
+
+Añadir la dirección del repositorio
+
+> git remote add origin https://github.com/numrelICN/REPOSITORIO.git
+
+(REPOSITORIO) es el que les doy yo
+
+Descargar el contenido del repositorio
+
+> git pull origin master
+
+
+o alternativamente
+
+> git clone git@github.com:numrelICN/REPOSITORIO.git
+
+
+
+2. Agregar, modificar archivos.
+
+Suponiendo que escribieron una rutina llamada ejemplo.f90
+
+
+Agregar archivo localmente
+
+> git add ejemplo.f90
+
+Marcar los cambios localmente con el archivo nuevo
+
+> git commit -a
+
+La bandera -a indica que se van a registrar todos los cambios que hayan 
+ocurrido en los archivos incluidos en el repositorio. Esto abre un editor
+de texto para escribir un mensaje que describe los cambios.
+
+Usualmente abre nano, vim o emacs, que pueden ser poco intuitivos. Esto se puede cambiar con el comando
+
+> git config --global core.editor "gedit"
+en el caso particular que quieran usar gedit (el de Ubuntu)
+
+en caso de que entren a alguno de los editores "clásicos" no se estresen
+
+nano: es muy intuitivo salvo para salvar/salir. En ese caso
+
+      guardar cambios al archivo: Ctrl+o
+      salir: Ctrl+x
+
+emacs: similar a nano, con comandos más complejos
+       
+       guardar:  Ctrl+ x s (sin soltar Ctrl teclean la secuencia "x" "s")
+       salir:    Ctrl+ x c
+
+vim:   el menos intuitivo de todos. Por defecto comienza en modo de comando
+       Para entrar al modo de edición teclean: i
+       para salir del modo de edición: Esc
+       Para guardar:   :w (con los dos puntos, así empiezan casi todos los comandos de vi)
+       Para salir:     :q
+       Guardar cambios al salir:  :wq
+       Salir sin guardar cambios: :q!
+
+
+Por último para enviar los cambios al repositorio en github
+
+> git push -u origin master
+
+
+
