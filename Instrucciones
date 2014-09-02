@@ -1,16 +1,22 @@
 
-Tarea 0 (Opcional)
+Instrucciones para usar los repositorios
 
 
-Esta tarea es para recordar cosas que debieron haber aprendido (o les comentaron) en
-el curso de Ecuaciones Diferenciales y tal vez si ya llevaron Física Computacional.
+Se me había ocurrido dejarles un ejercicio para recordar cosas que
+debieron haber aprendido (o les comentaron) en el curso de Ecuaciones
+Diferenciales y tal vez si ya llevaron Física Computacional.
 
-Consiste en desarrollar un código para aproximar la solución de una ecuación ordinaria sencilla
+Consiste en desarrollar un código para aproximar la solución de una
+ecuación ordinaria sencilla
 
 y'=-ky
 
-Les agrego unas notas que escribí para un curso que dí este verano en el MCTP, abordo 
-temas de estabilidad y convergencia que más adelante se verán a fondo.
+pero en clase tengo entendido que ya les quedó de tarea resolver
+
+phi'' + 2 phi'/r = S(r)
+
+para distintas formas de la fuente S.
+
 
 Un programa de este tipo generalmente lleva una estructura sencilla
 
@@ -29,11 +35,16 @@ Ciclo para obtener nuevos valores
 Fin
 
 
-Para una implementación rápida pueden usar el método de Euler (que en general no sirve de mucho)
 
+Les agrego unas notas que escribí para un curso que dí este verano en el MCTP, abordo 
+temas de estabilidad y convergencia que más adelante se verán a fondo.
+
+
+Ahora sí, notas para trabajar en el repositorio, asumiendo que ya
+configuraron git y registraron las claves correspondientes siguiendo
+las instrucciones de las ligas que deje en el README
 
 Guía rápida de git:
-
 
 1. Sincronizar con un repositorio
 
@@ -49,7 +60,7 @@ Añadir la dirección del repositorio
 
 > git remote add origin https://github.com/numrelICN/REPOSITORIO.git
 
-(REPOSITORIO) es el que les doy yo
+(REPOSITORIO) es el que les doy yo. Les llegará invitación por correo a cada uno.
 
 Descargar el contenido del repositorio
 
