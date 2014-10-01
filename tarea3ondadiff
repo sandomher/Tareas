@@ -1,0 +1,73 @@
+/*--Ecuacion de onda: Aproximacion de la ecuacion de onda-------*/
+/*--por medio de diferencias finitas "D_t^2(u)-rho(D_x^2(u))=0"-*/
+/*-------------Santiago Dominguez Hernandez----------------------*/
+
+
+#include<stdio.h>                              //Librerias a usar
+#include<math.h>                              
+float Mx(float x)                           
+{
+ return exp(-x*x);                             //funcion para condicion 
+}                                              //inicial en el espacio "Gaussiana"
+FILE *fileonda;
+int main()                                     //Comienza el programa!
+    {                                          
+     
+    
+     int i,j,n;                                //Declaracion de enteros para iterar i, j y n que es numero de iteraciones
+     float rho,k,l,T,h,ti,xi,lam;              //Declaracion de flotantes rho velocidad, k paso de tiempo, l longitud
+                                               //h paso de longitud, ti tiempo, xi posicion, lam paso de velocidad
+     fileonda=fopen("onda1.dat","w");
+     printf("introducir la longitud: ");       //Se introducen los datos por teclado
+     scanf("%f",&l);
+     printf("introducir el tiempo T: ");
+     scanf("%f",&T);
+     printf("introducir el numero n: ");
+     scanf("%d",&n);
+     printf("introducir velocidad rho: ");
+     scanf("%f",&rho);
+     double  u[1000][1000];                    //Tamano de la maximo de la matrix o malla
+     h=l/n;                                 
+     k=T/n;
+     lam=k*rho/h;
+     u[0][0]=Mx(0);                            //Condiciones iniciales del problema
+     u[n][0]=0;
+     
+     for(j=1;j<=n;j++)
+       { 
+        u[0][j]=0;                             //Condiciones a la frontera del problema
+        u[n][j]=0;
+       }
+     
+         for(i=1;i<=n-1;i++)
+           { 
+            u[i][0]=Mx(i*h);
+            u[i][1]=Mx(i*h)-(lam*lam*Mx(i*h))+(lam*lam*0.5*Mx((i+1)*h))-(lam*lam*Mx((i-1)*h));
+           } 
+
+         
+            //Se intera sobre la ecuacion de onda en diferencias finitas
+
+            for(j=1;j<=n-1;j++)
+               {
+                for(i=1;i<=n-1;i++)
+                   {
+                    u[i][j+1]=2*u[i][j]-u[i][j-1]+lam*lam*(u[i+1][j])-lam*lam*(2*u[i][j])+lam*lam*(u[i-1][j]); 
+                   } 
+                
+                }
+               
+               //Se imprimen los resultado en el archivo onda1.dat
+               for (i = 0; i <= n; ++i)
+               {
+               for (j = 0; j <=n; ++j)
+               {
+                    ti=j*k;
+                    xi=i*h;
+                    fprintf(fileonda, "%f\t%f\t%f\n" ,xi,ti,u[i][j]);
+               }
+           }  
+          
+	fclose(fileonda);
+     return 0;
+    }                                                                     //Fin del programa
